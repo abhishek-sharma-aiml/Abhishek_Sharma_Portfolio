@@ -17,19 +17,25 @@ export const ContactSection: React.FC = () => {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    const payload = {
+    const payload: Record<string, any> = {
+      access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
       name: formData.get("name") as string,
       email: formData.get("email") as string,
-      subject: formData.get("subject") as string,
+      subject: (formData.get("subject") as string) || "Portfolio Inquiry",
       message: formData.get("message") as string,
-      botcheck: formData.get("botcheck") as string,
     };
 
+    const botcheck = formData.get("botcheck");
+    if (botcheck) {
+      payload.botcheck = botcheck;
+    }
+
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify(payload),
       });
@@ -41,7 +47,7 @@ export const ContactSection: React.FC = () => {
         form.reset();
       } else {
         setFormStatus("error");
-        setErrorMessage(data.message || "Failed to dispatch email via SMTP.");
+        setErrorMessage(data.message || "Failed to send message via Web3Forms.");
       }
     } catch (error: any) {
       setFormStatus("error");
