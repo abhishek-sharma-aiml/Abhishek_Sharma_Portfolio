@@ -3,7 +3,7 @@
 import React, { Suspense, useRef, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 
-const Spline = dynamic(() => import('@splinetool/react-spline/next'), { ssr: false })
+const Spline = dynamic(() => import('@splinetool/react-spline'), { ssr: false })
 
 interface SplineSceneProps {
   scene: string
