@@ -1,0 +1,26 @@
+# ==============================================================================
+# Abhishek Sharma - AI/ML Engineer Portfolio Dependencies
+# Python environment requirements for data processing, image assets & ML utilities
+# ==============================================================================
+
+# Core Math & Data Processing
+numpy>=1.24.0
+pandas>=2.1.0
+
+# Image Processing & Asset Optimization
+Pillow>=10.0.0
+opencv-python-headless>=4.8.0
+
+# HTML Auditing & Web Scraping Utilities
+beautifulsoup4>=4.12.0
+requests>=2.31.0
+
+# Deep Learning & Computer Vision (Project Models Reference)
+torch>=2.1.0
+torchvision>=0.16.0
+ultralytics>=8.1.0
+
+# Backend & API Prototyping
+fastapi>=0.109.0
+uvicorn>=0.27.0
+pydantic>=2.5.0
